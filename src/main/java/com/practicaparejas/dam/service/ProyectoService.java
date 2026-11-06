@@ -1,19 +1,20 @@
 package com.practicaparejas.dam.service;
 
+import com.practicaparejas.dam.model.Proyecto;
 import com.practicaparejas.dam.repo.ProyectoRepository;
-import org.hibernate.annotations.NotFound;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import java.util.List;
 
 public class ProyectoService {
 
     private final ProyectoRepository proyectoRepository;
 
-    public List<Proyecto> getAllProyectos() {
-        List<Proyecto> result = proyectoRepository.findAll();
-/*        if (result.isEmpty()) {
+    public ProyectoService(ProyectoRepository proyectoRepository) {
+        this.proyectoRepository = proyectoRepository;
+    }
 
-        }*/
-        return result;
+    public List<Proyecto> getAllProyectos() {
+        return proyectoRepository.findAll();
     }
 
     public Proyecto addProyecto(Proyecto p) {
